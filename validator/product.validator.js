@@ -1,4 +1,4 @@
-const { body, validationResult } = require("express-validator");
+const { body } = require("express-validator");
 
 const createProductValidator = [
   body("name").notEmpty().withMessage("Product Name is required"),

@@ -15,7 +15,10 @@ const {
 const {
   createProductController,
   getAllProductController,
-  getSingleProduct,
+  getSingleProductController,
+  updateProductController,
+  deleteProductController,
+  deleteAllProductController,
 } = require("../controllers/product.controller");
 const { createProductValidator } = require("../validator/product.validator");
 
@@ -55,6 +58,15 @@ router.post(
 router.get("/all-product", checkHeaders, getAllProductController);
 
 // Get single Product
-router.get("/product/:id", checkHeaders,getSingleProduct);
+router.get("/product/:id", checkHeaders, getSingleProductController);
+
+//Update Product
+router.put("/product/:id", checkHeaders, updateProductController);
+
+//Delete Product
+router.delete("/product/:id", checkHeaders, deleteProductController);
+
+// Delete All Product
+router.delete("/all-product", checkHeaders, deleteAllProductController);
 
 module.exports = router;
