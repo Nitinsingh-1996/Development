@@ -1,4 +1,4 @@
-const { body, validationResult } = require("express-validator");
+const { body } = require("express-validator");
 const userModel = require("../models/user.model");
 
 const userRegisterValidator = [
@@ -54,29 +54,7 @@ const userLoginValidator = [
     .withMessage("Password must be more than 6"),
 ];
 
-const userRegisterValidatorFn = (req, res, next) => {
-  const errors = validationResult(req);
-  if (!errors.isEmpty()) {
-    return res.status(400).json({
-      success: false,
-      errors: errors.array(),
-    });
-  }
-  next();
-};
-const userLoginValidatorFn = (req, res, next) => {
-  const errors = validationResult(req);
-  if (!errors.isEmpty()) {
-    return res.status(400).json({
-      success: false,
-      errors: errors.array(),
-    });
-  }
-  next();
-};
 module.exports = {
   userRegisterValidator,
-  userRegisterValidatorFn,
   userLoginValidator,
-  userLoginValidatorFn,
 };
